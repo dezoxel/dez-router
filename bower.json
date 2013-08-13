@@ -1,0 +1,17 @@
+{
+  "name": "canjs-router-dsl",
+  "version": "0.1.0",
+  "main": "router.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "canjs": "~1.1.7",
+    "microevent": "1.1.0",
+    "jquery": "*"
+  }
+}
