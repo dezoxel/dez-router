@@ -4,8 +4,7 @@ Requirements:
 1. CanJS Route (tested only on 1.1.7, but should work with earlier versions).
 2. MicroEvent (tested on 1.x). Just very simple event emitter.
 3. jQuery (0_o) - because "can/route" requires it. Why? I don't know.
-
-Also it uses CommonJS AMD. Why? Because everyone must use module approach! Its enough archaisms.
+4. CommonJS AMD loader. Why? Because everyone must use module approach! Its enough archaisms.
 
 Example
 
@@ -21,6 +20,8 @@ require(['router'], function(router) {
 		.when('tweets/:id', {module: 'controls/tweet-details'});
 	 	.when('tweets/:id/reply', {module: 'reply-to-tweet'})
 	 	.when('tweets/new', {module: 'compose-tweet'});
+
+	router.goTo('tweets');
 
 });
 

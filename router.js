@@ -1,6 +1,7 @@
 define(['can/route', 'microevent'], function(CanRoute, MicroEvent) {
 
-	function Router() {
+	function Router(CanRoute) {
+		this._CanRoute = CanRoute;
 	}
 
 	Router.prototype.when = function(routePattern, options) {
@@ -12,7 +13,7 @@ define(['can/route', 'microevent'], function(CanRoute, MicroEvent) {
 
 		this.batchNum = null;
 
-		CanRoute(routePattern).bind('change', function(e, _, _, currentRoutePattern) {
+		this._CanRoute(routePattern).bind('change', function(e, _, _, currentRoutePattern) {
 			this.routingFunction(routePattern, currentRoutePattern, moduleName, e);
 		}.bind(this));
 
@@ -30,7 +31,7 @@ define(['can/route', 'microevent'], function(CanRoute, MicroEvent) {
 	};
 
 	Router.prototype.loadModule = function(moduleName) {
-		requirejs([moduleName], function(module) {
+		require([moduleName], function(module) {
 			this.trigger('moduleLoaded', module);
 		}.bind(this));
 	};
@@ -49,10 +50,10 @@ define(['can/route', 'microevent'], function(CanRoute, MicroEvent) {
 
 		routeParams.route = routePattern;
 
-		CanRoute.attr(routeParams)
+		this._CanRoute.attr(routeParams)
 	};
 
-	var router = new Router();
+	var router = new Router(CanRoute);
 	MicroEvent.mixin(router);
 
 	return router;
