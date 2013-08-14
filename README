@@ -10,18 +10,18 @@ Example
 
 require(['router'], function(router) {
 
-	router.bind('moduleLoaded', function(Control) {
-		console.log('Just some control loaded');
-		var control = new Control(document.body);
-	});
+  router.bind('moduleLoaded', function(Control) {
+    console.log('Just some control loaded');
+    var control = new Control(document.body);
+  });
 
-	router
-		.when('tweets', {module: 'controls/tweets-list'})
-		.when('tweets/:id', {module: 'controls/tweet-details'});
-	 	.when('tweets/:id/reply', {module: 'reply-to-tweet'})
-	 	.when('tweets/new', {module: 'compose-tweet'});
+  router
+    .when('tweets', {module: 'controls/tweets-list'})
+    .when('tweets/:id', {module: 'controls/tweet-details'});
+    .when('tweets/:id/reply', {module: 'reply-to-tweet'})
+    .when('tweets/new', {module: 'compose-tweet'});
 
-	router.goTo('tweets');
+  router.goTo('tweets');
 
 });
 
