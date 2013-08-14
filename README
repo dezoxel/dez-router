@@ -27,5 +27,9 @@ require(['router'], function(router) {
 
 It is all of you should to know. If I missed something don't hesitate to contact me.
 
+Tests
+
+Run JSHint: $ grunt test
+
 Author: Yuriy Buchchenko (dezoxel).
 

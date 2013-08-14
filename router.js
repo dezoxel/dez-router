@@ -1,4 +1,5 @@
 define(['can/route', 'microevent'], function(CanRoute, MicroEvent) {
+  'use strict';
 
   function Router(CanRoute) {
     this._CanRoute = CanRoute;
@@ -13,7 +14,7 @@ define(['can/route', 'microevent'], function(CanRoute, MicroEvent) {
 
     this.batchNum = null;
 
-    this._CanRoute(routePattern).bind('change', function(e, _, _, currentRoutePattern) {
+    this._CanRoute(routePattern).bind('change', function(e, attr, how, currentRoutePattern) {
       this.routingFunction(routePattern, currentRoutePattern, moduleName, e);
     }.bind(this));
 
@@ -50,7 +51,7 @@ define(['can/route', 'microevent'], function(CanRoute, MicroEvent) {
 
     routeParams.route = routePattern;
 
-    this._CanRoute.attr(routeParams)
+    this._CanRoute.attr(routeParams);
   };
 
   var router = new Router(CanRoute);
