@@ -9,7 +9,8 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc',
       },
       all: [
-        '*.js',
+        'Gruntfile.js',
+        'lib/*.js',
       ]
     }
   });

@@ -1,7 +1,7 @@
 {
   "name": "canjs-router-dsl",
   "version": "0.1.0",
-  "main": "router.js",
+  "main": "lib/router.js",
   "ignore": [
     "**/.*",
     "node_modules",

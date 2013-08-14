@@ -2,7 +2,7 @@
   "name": "canjs-router-dsl",
   "version": "0.1.0",
   "description": "CanJS router DSL",
-  "main": "router.js",
+  "main": "lib/router.js",
   "scripts": {
     "test": "grunt test"
   },
