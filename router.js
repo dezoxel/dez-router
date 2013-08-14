@@ -40,6 +40,18 @@ define(['can/route', 'microevent'], function(CanRoute, MicroEvent) {
 			(e.batchNum === null || e.batchNum !== this.batchNum);
 	};
 
+	Router.prototype.goTo = function(routePattern, params) {
+		var routeParams = params;
+
+		if (!routeParams) {
+			routeParams = {};
+		}
+
+		routeParams.route = routePattern;
+
+		CanRoute.attr(routeParams)
+	};
+
 	var router = new Router();
 	MicroEvent.mixin(router);
 
