@@ -13,26 +13,26 @@ CanJS router DSL
 ```js
 require(['router'], function(router) {
 
-  # you really should subscribe to this event if you want something besides loading module file
+  // you really should subscribe to this event if you want something besides loading module file
   router.bind('moduleLoaded', function(Control) {
     console.log('Just some control loaded');
     var control = new Control(document.body);
   });
 
-  # define routes and handlers
+  // define routes and handlers
   router
     .when('tweets', {module: 'controls/tweets-list'})
     .when('tweets/:id', {module: 'controls/tweet-details'});
     .when('tweets/:id/reply', {module: 'controls/reply-to-tweet'})
     .when('tweets/new', {module: 'controls/compose-tweet'});
 
-  # default route
+  // default route
   router.goTo('tweets');
 
 });
 ```
 
-It is all of you should to know. If I missed something don't hesitate to contact me.
+It is all of you should to know.
 
 ## Tests
 
@@ -43,8 +43,6 @@ $ grunt
 ```
 
 It will install grunt (`npm install`) and module dependencies (`bower install`). `grunt` will execute `jshint` and `jasmine` tasks.
-
-Author: Yuriy Buchchenko (dezoxel).
 
 ## License
 
