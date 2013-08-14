@@ -1,0 +1,28 @@
+{
+  "name": "canjs-router-dsl",
+  "version": "0.1.0",
+  "description": "CanJS router DSL",
+  "main": "router.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dezoxel/canjs-router-dsl.git"
+  },
+  "keywords": [
+    "canjs",
+    "router",
+    "dsl",
+    "wrapper"
+  ],
+  "author": "Yuriy Buchchenko aka dezoxel",
+  "license": "BSD",
+  "readmeFilename": "README",
+  "bugs": {
+    "url": "https://github.com/dezoxel/canjs-router-dsl/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}
