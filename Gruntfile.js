@@ -8,6 +8,7 @@ module.exports = function(grunt) {
         src: 'lib/**/*.js',
         options: {
           specs: 'test/*.spec.js',
+          helpers: 'test/*.helper.js',
           template: require('grunt-template-jasmine-requirejs'),
           templateOptions: {
             requireConfigFile: 'test/main.js'
@@ -29,7 +30,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
 
-  grunt.registerTask('test', ['jshint', 'jasmine']);
-  grunt.registerTask('default', ['test']);
+  grunt.registerTask('test', ['jasmine']);
+  grunt.registerTask('default', ['jshint', 'test']);
 
 };
