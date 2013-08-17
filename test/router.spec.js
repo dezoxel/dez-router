@@ -12,7 +12,16 @@ define(['router'], function(router) {
       expect(router.route('user/:id/profile').module).toEqual('user-profile')
     });
 
-    it('supports params in the route pattern');
+    it('supports params in the route pattern', function() {
+      router.when('news/:id', {module: 'news-details'})
+
+      router.bind('routeMatched', function(params) {
+        expect(params.id).toBe(2);
+      });
+
+      goTo({route: 'news/:id', id: 2});
+    });
+
     it('requires "module" option when defining a route');
     it('moves control to the callback after the route matched');
 
@@ -32,4 +41,8 @@ define(['router'], function(router) {
     });
 
   });
+
+  function goTo(params) {
+    router.trigger('routeChanged', params);
+  }
 });
