@@ -30,7 +30,13 @@ define(['router'], function(router) {
         goTo({route: 'user/:id/profile', id: 2});
       });
 
-      it('moves control to the callback after the route matched');
+      it('allows handle "not matched" event', function() {
+        router.bind('routeNotMatched', function(params) {
+          expect(params.route).toEqual('hello/world');
+        });
+
+        goTo({route: 'hello/world'});
+      });
     });
 
     describe('when empty', function() {
