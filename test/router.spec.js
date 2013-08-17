@@ -7,7 +7,7 @@ define(['router'], function(router) {
       beforeEach(function() {
         router.reset();
 
-        router.when('user/:id/profile', {module: 'user/profile'});
+        router.when('user/:id/profile', {module: 'user/profile', foo: 'bar'});
       });
 
       it('registers route pattern and maps it to the module name', function() {
@@ -22,7 +22,13 @@ define(['router'], function(router) {
         goTo({route: 'user/:id/profile', id: 2});
       });
 
-      it('passes custom route params when defining a route');
+      it('passes custom route params when defining a route', function() {
+        router.bind('routeMatched', function(params) {
+          expect(params.foo).toEqual('bar');
+        });
+
+        goTo({route: 'user/:id/profile', id: 2});
+      });
 
       it('moves control to the callback after the route matched');
     });
