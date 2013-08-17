@@ -16,7 +16,7 @@ define(['router'], function(router) {
 
       it('supports params in the route pattern', function() {
         router.bind('routeMatched', function(params) {
-          expect(params.id).toBe(2);
+          expect(params.id).toEqual(2);
         });
 
         goTo({route: 'user/:id/profile', id: 2});
@@ -30,12 +30,25 @@ define(['router'], function(router) {
         goTo({route: 'user/:id/profile', id: 2});
       });
 
-      it('allows handle "not matched" event', function() {
+      it('handles "not matched" event', function() {
         router.bind('routeNotMatched', function(params) {
           expect(params.route).toEqual('hello/world');
         });
 
         goTo({route: 'hello/world'});
+      });
+
+      it('registers many routes', function() {
+        router.when('user/:id');
+        router.when('news');
+        router.when('articles/:some-id/newest');
+        router.when(':section/:category/:item')
+
+        router.bind('routeChanged', function(params) {
+          expect(params.someId).toEqual(56);
+        });
+
+        goTo({route: 'articles/:some-id/newest', someId: 56});
       });
     });
 
