@@ -1,4 +1,6 @@
-define(['router'], function(router) {
+/* global describe, it, expect, beforeEach */
+define(['dez-router'], function(router) {
+  'use strict';
 
   describe('Router', function() {
 
@@ -11,7 +13,7 @@ define(['router'], function(router) {
       });
 
       it('registers route pattern and maps it to the module name', function() {
-        expect(router.route('user/:id/profile').module).toEqual('user/profile')
+        expect(router.route('user/:id/profile').module).toEqual('user/profile');
       });
 
       it('supports params in the route pattern', function() {
@@ -42,7 +44,7 @@ define(['router'], function(router) {
         router.when('user/:id');
         router.when('news');
         router.when('articles/:some-id/newest');
-        router.when(':section/:category/:item')
+        router.when(':section/:category/:item');
 
         router.bind('routeChanged', function(params) {
           expect(params.someId).toEqual(56);
