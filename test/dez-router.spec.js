@@ -62,11 +62,20 @@ define(['dez-router'], function(router) {
       });
 
       it('has method-alias to a "routeNotMatched" event', function() {
-        router.otherwise(function(params) {
+        router.whenNotFound(function(params) {
           expect(params.route).toEqual('hello/world');
         });
 
         goTo({route: 'hello/world'});
+      });
+
+      it('has method-alias to the default route', function() {
+        router.otherwise({module: 'home-module'});
+        router.then(function(params) {
+          expect(params.module).toEqual('home-module');
+        });
+
+        goTo({route: ''});
       });
 
     });
