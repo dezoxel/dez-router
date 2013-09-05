@@ -52,6 +52,23 @@ define(['dez-router'], function(router) {
 
         goTo({route: 'articles/:some-id/newest', someId: 56});
       });
+
+      it('has method-alias to a "routeMatched" event', function() {
+        router.then(function(params) {
+          expect(params.module).toEqual('user/profile');
+        });
+
+        goTo({route: 'user/:id/profile', id: 2});
+      });
+
+      it('has method-alias to a "routeNotMatched" event', function() {
+        router.otherwise(function(params) {
+          expect(params.route).toEqual('hello/world');
+        });
+
+        goTo({route: 'hello/world'});
+      });
+
     });
 
     describe('when empty', function() {
