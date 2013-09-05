@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "canjs": "~1.1.7",
-    "microevent": "1.1.0",
+    "microevent": "1.1.1",
     "jquery": "*"
   }
 }
