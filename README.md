@@ -1,4 +1,4 @@
-CanJS router DSL
+Dez Router
 =======
 
 ## Requirements
@@ -13,26 +13,32 @@ CanJS router DSL
 ```js
 require(['router'], function(router) {
 
-  // you really should subscribe to this event if you want something besides loading module file
-  router.bind('moduleLoaded', function(Control) {
-    console.log('Just some control loaded');
-    var control = new Control(document.body);
-  });
 
-  // define routes and handlers
+  // define routes
   router
     .when('tweets', {module: 'controls/tweets-list'})
-    .when('tweets/:id', {module: 'controls/tweet-details'});
-    .when('tweets/:id/reply', {module: 'controls/reply-to-tweet'})
-    .when('tweets/new', {module: 'controls/compose-tweet'});
-
-  // default route
-  router.goTo('tweets');
+    .when('tweets/:id', {module: 'controls/tweet-details'})
+    .when('tweets/:id/reply', {module: 'reply-to-tweet'})
+    .when('tweets/new', {module: 'compose-tweet'})
+    // WHEN route is matched, THEN do this work
+    .then(function(params) {
+      require([params.module], function(Controller) {
+        new Controller();
+      });
+    })
+    // WHEN none of routes is not requested, OTHERWISE use default route
+    .otherwise({module: 'controls/tweets-list'})
+    // WHEN route is not matched
+    .whenNotFound(function(params) {
+      console.log('Sorry, page not found');
+    });
 
 });
 ```
 
-It is all of you should to know.
+## TODO
+
+Implement self routing mechanism watching to `window.location.hash` changes. It means we will not have dependency to CanJS and jQuery at all. Only MicroEvent.
 
 ## Tests
 
@@ -47,4 +53,3 @@ It will install grunt (`npm install`) and module dependencies (`bower install`).
 ## License
 
 Released under the [MIT License](http://www.opensource.org/licenses/MIT)
-
