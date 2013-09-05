@@ -1,8 +1,8 @@
 /* global describe, it, expect, beforeEach */
 define(['can-dez-router', 'can/route'], function(router, CanRoute) {
-	'use strict';
+  'use strict';
 
-	describe('CanJS Dez Router', function() {
+  describe('CanJS Dez Router', function() {
 
     beforeEach(function() {
       router.reset();
@@ -27,10 +27,18 @@ define(['can-dez-router', 'can/route'], function(router, CanRoute) {
       goTo({route: 'user/:id/profile', id: 2});
     });
 
-	});
+    it('handles "not matched" event', function() {
+      router.bind('routeNotMatched', function(params) {
+        expect(params.route).toEqual('hello/world');
+      });
+
+      goTo({route: 'hello/world'});
+    });
+
+  });
 
   function goTo(params) {
-    CanRoute.attr(params, true);
+    CanRoute.attr(params);
   }
 
 });
