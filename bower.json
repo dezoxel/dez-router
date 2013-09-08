@@ -1,7 +1,7 @@
 {
-  "name": "canjs-router-dsl",
+  "name": "dez-router",
   "version": "0.3.2",
-  "main": "lib/dez-router.js",
+  "main": "lib/can-dez-router.js",
   "ignore": [
     "**/.*",
     "node_modules",
