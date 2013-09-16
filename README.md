@@ -16,6 +16,7 @@ require(['router'], function(router) {
 
   // define routes
   router
+    .defaultRoute({module: 'controls/tweets-list'})
     .when('tweets', {module: 'controls/tweets-list'})
     .when('tweets/:id', {module: 'controls/tweet-details'})
     .when('tweets/:id/reply', {module: 'reply-to-tweet'})
@@ -26,8 +27,6 @@ require(['router'], function(router) {
         new Controller();
       });
     })
-    // WHEN none of routes is not requested, OTHERWISE use default route
-    .otherwise({module: 'controls/tweets-list'})
     // WHEN route is not matched
     .whenNotFound(function(params) {
       console.log('Sorry, page not found');

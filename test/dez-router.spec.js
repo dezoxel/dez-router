@@ -70,7 +70,7 @@ define(['dez-router'], function(router) {
       });
 
       it('has method-alias to the default route', function() {
-        router.otherwise({module: 'home-module'});
+        router.defaultRoute({module: 'home-module'});
         router.then(function(params) {
           expect(params.module).toEqual('home-module');
         });
