@@ -1,5 +1,5 @@
 /* global describe, it, expect, beforeEach */
-define(['dez-router'], function(router) {
+define(['dez-router/router'], function(router) {
   'use strict';
 
   describe('Router', function() {
