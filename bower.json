@@ -1,7 +1,7 @@
 {
   "name": "dez-router",
   "version": "0.3.3",
-  "main": "lib/can-dez-router.js",
+  "main": "lib/dez-router.js",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -10,8 +10,6 @@
     "tests"
   ],
   "dependencies": {
-    "canjs": "~1.1.7",
-    "microevent": "1.1.1",
-    "jquery": "*"
+    "microevent": "1.1.1"
   }
 }

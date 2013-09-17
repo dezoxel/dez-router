@@ -2,7 +2,7 @@
   "name": "dez-router",
   "version": "0.3.3",
   "description": "Very simple JavaScript router with beautiful interface",
-  "main": "lib/can-dez-router.js",
+  "main": "lib/dez-router.js",
   "scripts": {
     "test": "grunt test"
   },
@@ -11,10 +11,8 @@
     "url": "git@github.com:dezoxel/dez-router.git"
   },
   "keywords": [
-    "canjs",
     "router",
-    "dsl",
-    "wrapper"
+    "simple"
   ],
   "author": "Yuriy Buchchenko aka dezoxel",
   "license": "MIT",
