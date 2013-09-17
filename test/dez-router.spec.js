@@ -12,16 +12,20 @@ define(['dez-router'], function(router) {
         router.when('user/:id/profile', {module: 'user/profile', foo: 'bar'});
       });
 
-      it('registers route pattern and maps it to the module name', function() {
-        expect(router.route('user/:id/profile').module).toEqual('user/profile');
-      });
-
       it('supports params in the route pattern', function() {
         router.bind('routeMatched', function(params) {
           expect(params.id).toEqual(2);
         });
 
-        goTo({route: 'user/:id/profile', id: 2});
+        goTo('user/2/profile');
+      });
+
+      it('supports query string params', function() {
+        router.bind('routeMatched', function(params) {
+          expect(params.hello).toEqual('world');
+        });
+
+        goTo('user/2/profile&hello=world');
       });
 
       it('passes custom route params when defining a route', function() {
@@ -29,15 +33,15 @@ define(['dez-router'], function(router) {
           expect(params.foo).toEqual('bar');
         });
 
-        goTo({route: 'user/:id/profile', id: 2});
+        goTo('user/2/profile');
       });
 
       it('handles "not matched" event', function() {
         router.bind('routeNotMatched', function(params) {
-          expect(params.route).toEqual('hello/world');
+          expect(params).toBeUndefined();
         });
 
-        goTo({route: 'hello/world'});
+        goTo('hello/world');
       });
 
       it('registers many routes', function() {
@@ -50,7 +54,7 @@ define(['dez-router'], function(router) {
           expect(params.someId).toEqual(56);
         });
 
-        goTo({route: 'articles/:some-id/newest', someId: 56});
+        goTo('articles/56/newest');
       });
 
       it('has method-alias to a "routeMatched" event', function() {
@@ -58,15 +62,15 @@ define(['dez-router'], function(router) {
           expect(params.module).toEqual('user/profile');
         });
 
-        goTo({route: 'user/:id/profile', id: 2});
+        goTo('user/2/profile');
       });
 
       it('has method-alias to a "routeNotMatched" event', function() {
         router.whenNotFound(function(params) {
-          expect(params.route).toEqual('hello/world');
+          expect(params).toBeUndefined();
         });
 
-        goTo({route: 'hello/world'});
+        goTo('hello/world');
       });
 
       it('has method-alias to the default route', function() {
@@ -75,7 +79,7 @@ define(['dez-router'], function(router) {
           expect(params.module).toEqual('home-module');
         });
 
-        goTo({route: ''});
+        goTo('');
       });
 
     });
@@ -101,7 +105,7 @@ define(['dez-router'], function(router) {
 
   });
 
-  function goTo(params) {
-    router.trigger('routeChanged', params);
+  function goTo(url) {
+    window.location.hash = '#' + url;
   }
 });
