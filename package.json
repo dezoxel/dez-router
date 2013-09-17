@@ -1,6 +1,6 @@
 {
   "name": "dez-router",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Very simple JavaScript router with beautiful interface",
   "main": "lib/dez-router.js",
   "scripts": {
