@@ -1,17 +1,29 @@
 Dez Router
 =======
 
+Extremely simple and beautiful router for javascript applications.
+
 ## Requirements
 
-1. CanJS Route (tested only on 1.1.7, but should work with earlier versions).
-2. MicroEvent (tested on 1.x). Just very simple event emitter.
-3. jQuery (0_o) - because `can/route` requires it. Why? I don't know.
-4. CommonJS AMD loader. Why? Because everyone must use module approach! Its enough archaisms.
+1. MicroEvent (tested on 1.x). Just very simple and small event emitter.
+2. CommonJS AMD loader. Why? Because everyone must use module approach! Its enough archaisms.
+
+## Installation
+1. `bower install dez-router` or specify `dez-router` dependency in your bower.json.
+2. Or you can use it without bower, of course: download the library [file](https://raw.github.com/dezoxel/dez-router/master/lib/router.js), place it in your "libs/" folder.
+3. Create alias to `dez-router` lib in your AMD-loader configuration. See example below.
+4. Specify the dependency `dez-router/router` in your script.
 
 ## Example
 
 ```js
-require(['router'], function(router) {
+require.config({
+  paths: {
+    'dez-router': 'bower_components/dez-router/lib/router'
+  }
+});
+
+require(['dez-router'], function(router) {
 
 
   // define routes
@@ -37,7 +49,9 @@ require(['router'], function(router) {
 
 ## TODO
 
-Implement self routing mechanism watching to `window.location.hash` changes. It means we will not have dependency to CanJS and jQuery at all. Only MicroEvent.
+* Clean up the code.
+* Test it for complex routes, url encoded data, etc.
+* Test performance and improve it, if needed.
 
 ## Tests
 
@@ -52,3 +66,4 @@ It will install grunt (`npm install`) and module dependencies (`bower install`).
 ## License
 
 Released under the [MIT License](http://www.opensource.org/licenses/MIT)
+
