@@ -1,8 +1,10 @@
 /* global describe, it, expect, beforeEach */
-define(['dez-router/router'], function(router) {
+define(['dez-router/router'], function(Router) {
   'use strict';
 
   describe('Router', function() {
+
+    var router = new Router();
 
     describe('when define the route', function() {
 
