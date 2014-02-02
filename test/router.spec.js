@@ -9,7 +9,7 @@ define(['dez-router/router'], function(router) {
       beforeEach(function() {
         router.reset();
 
-        router.when('user/:id/profile', {module: 'user/profile', foo: 'bar'});
+        router.when('user/:id/profile', {module: 'user/profile', foo: 'bar', as: 'userProfile'});
       });
 
       it('supports params in the route pattern', function() {
@@ -44,11 +44,11 @@ define(['dez-router/router'], function(router) {
         goTo('hello/world');
       });
 
-      it('registers many routes', function() {
-        router.when('user/:id');
-        router.when('news');
-        router.when('articles/:some-id/newest');
-        router.when(':section/:category/:item');
+      it('registers routes', function() {
+        router.when('user/:id', {as: 'user'});
+        router.when('news', {as: 'news'});
+        router.when('articles/:some-id/newest', {as: 'newest'});
+        router.when(':section/:category/:item', {as: 'item'});
 
         router.bind('routeChanged', function(params) {
           expect(params.someId).toEqual(56);
@@ -74,7 +74,7 @@ define(['dez-router/router'], function(router) {
       });
 
       it('has method-alias to the default route', function() {
-        router.defaultRoute({module: 'home-module'});
+        router.defaultRoute({module: 'home-module', as: 'home'});
         router.then(function(params) {
           expect(params.module).toEqual('home-module');
         });
@@ -95,12 +95,17 @@ define(['dez-router/router'], function(router) {
       });
 
       it('resets all routes', function() {
-        router.when('hello/world', {module: 'hello-world'});
+        router.when('hello/world', {module: 'hello-world', as: 'hello'});
 
         router.reset();
 
         expect(router.hasAnyRoutes()).toBe(false);
       });
+    });
+
+    it('gets route pattern by route name', function() {
+      router.when('hello/world', {as: 'hello'});
+      expect(router.getPatternByName('hello')).toEqual('hello/world');
     });
 
   });
