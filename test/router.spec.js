@@ -105,9 +105,21 @@ define(['dez-router/router'], function(Router) {
       });
     });
 
-    it('gets route pattern by route name', function() {
-      router.when('hello/world', {as: 'hello'});
-      expect(router.getPatternByName('hello')).toEqual('hello/world');
+    describe('#getPatternByName', function() {
+
+      beforeEach(function() {
+        router.reset();
+      });
+
+      it('gets route pattern by route name', function() {
+        router.when('hello/world', {as: 'hello'});
+        expect(router.getPatternByName('hello')).toEqual('hello/world');
+      });
+
+      it('returns false if route pattern not found', function() {
+        expect(router.getPatternByName('hello')).toEqual(false);
+      });
+
     });
 
   });
