@@ -1,7 +1,7 @@
 Dez Router
 =======
 
-Extremely simple and beautiful router for javascript applications. Inspired by Ruby on Rails routes.
+Lightweight JavaScript router with a rails-like interface.
 
 ## Requirements
 
