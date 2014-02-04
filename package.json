@@ -1,6 +1,6 @@
 {
   "name": "dez-router",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Lightweight JavaScript router with a rails-like interface",
   "main": "lib/dez-router.js",
   "keywords": [
