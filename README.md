@@ -22,7 +22,7 @@ require.config({
   }
 });
 
-require(['dez-router'], function(Router) {
+require(['dez-router/router', 'dez-router/route-helper'], function(Router, RouteHelper) {
 
   var router = new Router();
 
@@ -30,9 +30,10 @@ require(['dez-router'], function(Router) {
   router
     .defaultRoute({module: 'controls/tweets-list', as: 'home_path'})
     .when('tweets', {module: 'controls/tweets-list', as: 'tweets_path'})
-    .when('tweets/:id', {module: 'controls/tweet-details', 'tweet_path'})
-    .when('tweets/:id/reply', {module: 'reply-to-tweet', 'reply_path'})
+    .when('tweets/:id', {module: 'controls/tweet-details', as: 'tweet_path'})
+    .when('tweets/:id/reply', {module: 'reply-to-tweet', as: 'reply_path'})
     .when('tweets/new', {module: 'compose-tweet', as: 'new_tweet_path'})
+    .when('tweets/new', function(){}})
     // WHEN route is matched, THEN do this work
     .then(function(params) {
       require([params.module], function(Controller) {
@@ -56,6 +57,12 @@ require(['dez-router'], function(Router) {
 * Clean up the code.
 * Test it for complex routes, url encoded data, etc.
 * Test performance and improve it, if needed.
+* README (more examples), show microevent configuring
+* unbind route
+* unbind by regex
+* optional params
+* Wildcard in route definition
+* Callback for route
 
 ## Tests
 
